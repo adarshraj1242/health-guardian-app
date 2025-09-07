@@ -306,7 +306,21 @@
 
                 const systemPrompt = "You are an AI Health Assistant. You must provide information about medicines and general health in clear and simple English. Always add a disclaimer that you are not a medical professional and the user should consult a doctor for any medical advice.";
 
-                const apiKey = ""; // API Key will be handled by the environment
+                const apiKey = "curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent" \
+  -H 'Content-Type: application/json' \
+  -H 'X-goog-api-key: GEMINI_API_KEY' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "Explain how AI works in a few words"
+          }
+        ]
+      }
+    ]
+  }'"; // API Key will be handled by the environment
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                 
                 // Add the new user message to the history for context
@@ -368,4 +382,5 @@
     </script>
 </body>
 </html>
+
 
